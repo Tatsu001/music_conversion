@@ -5,3 +5,9 @@
 /music_conversion_env
 
 gpu_usage.log
+
+__pycache__
+
+/enhanced_midi_results
+
+/input_separated_enhanced
