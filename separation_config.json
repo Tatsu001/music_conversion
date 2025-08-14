@@ -1,0 +1,134 @@
+{
+  "models": {
+    "htdemucs": {
+      "name": "htdemucs",
+      "quality": "standard",
+      "speed": "fast",
+      "description": "標準モデル（デフォルト）",
+      "vram_usage": "低",
+      "recommended_for": ["一般用途", "高速処理"]
+    },
+    "htdemucs_ft": {
+      "name": "htdemucs_ft", 
+      "quality": "high",
+      "speed": "medium",
+      "description": "ファインチューニング版（推奨）",
+      "vram_usage": "中",
+      "recommended_for": ["高品質分離", "バランス重視"]
+    },
+    "mdx_extra_q": {
+      "name": "mdx_extra_q",
+      "quality": "highest", 
+      "speed": "slow",
+      "description": "最高品質版",
+      "vram_usage": "高",
+      "recommended_for": ["最高品質", "プロ用途"]
+    },
+    "htdemucs_6s": {
+      "name": "htdemucs_6s",
+      "quality": "high",
+      "speed": "medium", 
+      "description": "6ステム分離版",
+      "vram_usage": "高",
+      "recommended_for": ["詳細分離", "楽器個別分析"]
+    }
+  },
+  
+  "quality_presets": {
+    "standard": {
+      "overlap": 0.5,
+      "use_float32": false,
+      "mp3_preset": 2,
+      "segment": 4,
+      "description": "標準品質（高速処理）"
+    },
+    "high": {
+      "overlap": 0.75,
+      "use_float32": true,
+      "mp3_preset": 2,
+      "segment": 7,
+      "description": "高品質（推奨設定）"
+    },
+    "highest": {
+      "overlap": 0.85,
+      "use_float32": true,
+      "mp3_preset": 2,
+      "segment": 12,
+      "description": "最高品質（処理時間長）"
+    }
+  },
+  
+  "preprocessing": {
+    "normalize": {
+      "enabled": true,
+      "peak_level": -1.0,
+      "rms_target": -23.0,
+      "description": "音量正規化"
+    },
+    "vocal_enhance": {
+      "enabled": false,
+      "frequency_range": [1000, 4000],
+      "boost_db": 2.0,
+      "description": "ボーカル帯域強調"
+    },
+    "drum_enhance": {
+      "enabled": false,
+      "frequency_ranges": [[80, 200], [2000, 8000]],
+      "boost_db": 1.5,
+      "description": "ドラム成分強調"
+    },
+    "bass_enhance": {
+      "enabled": false,
+      "frequency_range": [40, 200],
+      "boost_db": 1.0,
+      "description": "ベース帯域強調"
+    },
+    "noise_reduction": {
+      "enabled": false,
+      "strength": 0.1,
+      "description": "ノイズ除去"
+    }
+  },
+  
+  "gpu_optimization": {
+    "rtx_2070": {
+      "max_segment": 8,
+      "recommended_models": ["htdemucs_ft", "htdemucs"],
+      "avoid_models": [],
+      "memory_limit_gb": 6.0
+    },
+    "rtx_3080": {
+      "max_segment": 12,
+      "recommended_models": ["mdx_extra_q", "htdemucs_ft"],
+      "avoid_models": [],
+      "memory_limit_gb": 10.0
+    },
+    "rtx_4090": {
+      "max_segment": 16,
+      "recommended_models": ["mdx_extra_q", "htdemucs_6s"],
+      "avoid_models": [],
+      "memory_limit_gb": 24.0
+    }
+  },
+  
+  "output": {
+    "format": "wav",
+    "bit_depth": 32,
+    "sample_rate": 44100,
+    "create_metadata": true,
+    "create_visualization": false
+  },
+  
+  "advanced": {
+    "batch_processing": {
+      "enabled": false,
+      "max_concurrent": 1,
+      "resume_interrupted": true
+    },
+    "experimental": {
+      "use_tta": false,
+      "custom_overlap": null,
+      "memory_efficient": true
+    }
+  }
+}

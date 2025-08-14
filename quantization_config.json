@@ -1,0 +1,28 @@
+{
+  "quantization": {
+    "enabled": true,
+    "grid_resolution": "thirtysecond",
+    "strength": 0.8,
+    "auto_detect_bpm": true,
+    "manual_bpm": null,
+    "swing_ratio": 0.0,
+    "track_settings": {
+      "drums": {
+        "strength": 1.0,
+        "grid_resolution": "thirtysecond"
+      },
+      "bass": {
+        "strength": 0.9,
+        "grid_resolution": "thirtysecond"
+      },
+      "vocals": {
+        "strength": 0.6,
+        "grid_resolution": "thirtysecond"
+      },
+      "other": {
+        "strength": 0.8,
+        "grid_resolution": "thirtysecond"
+      }
+    }
+  }
+}
